@@ -1,0 +1,25 @@
+{
+    "name": "dawnstar/popup",
+    "description": "Popup for Dawnstar",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Dawnstar\\Popup\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dawnstar\\Popup\\PopupServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true,
+        "optimize-autoloader": true
+    }
+}
