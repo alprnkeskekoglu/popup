@@ -15,19 +15,19 @@
 </div>
 
 <script>
-    var modal = new bootstrap.Modal(document.getElementById("popupModal{{ $popup->id }}"))
+    var modal{{ $popup->id }} = new bootstrap.Modal(document.getElementById("popupModal{{ $popup->id }}"))
     @if($popup->trigger == 1)
     setTimeout(function () {
-        modal.show();
+        modal{{ $popup->id }}.show();
     }, 1000);
     @elseif($popup->trigger == 2)
     setTimeout(function () {
-        modal.show();
+        modal{{ $popup->id }}.show();
     }, {{$popup->trigger_count*1000}});
     @elseif($popup->trigger == 3)
     $(window).scroll(function () {
         if ($(document).scrollTop() > {{ $popup->trigger_count }}) {
-            modal.show();
+            modal{{ $popup->id }}.show();
         }
     });
     @endif
@@ -35,7 +35,7 @@
     @if($popup->display_second)
     @php($second = $popup->trigger == 2 ? $popup->trigger_count : 1)
     setTimeout(function () {
-        modal.hide();
+        modal{{ $popup->id }}.hide();
     }, {{ ($popup->display_second + $second) * 1000}});
     @endif
 </script>

@@ -1,7 +1,7 @@
 @extends('Core::layouts.app')
 
 @section('content')
-    @include('Core::includes.page_header', ['headerTitle' => __('Popup::general.title.create')])
+    @include('Core::includes.page_header', ['headerTitle' => __('Popup::general.title.edit')])
 
     <div class="row">
         <div class="col-12">
@@ -19,7 +19,7 @@
                         @method('PUT')
                         @csrf
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <label class="form-label">@lang('Popup::general.labels.status')</label>
                                 <div class="mb-3">
                                     <div class="form-check form-check-inline form-radio-success">
@@ -41,7 +41,19 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label for="order" class="form-label">@lang('Popup::general.labels.order')</label>
+                                    <input class="form-control w-50 @error('order') is-invalid @enderror" id="order"
+                                           type="number" name="order" value="{{ old('order', $popup->order) }}">
+                                    @error('order')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
                                 <label class="form-label">@lang('Popup::general.labels.devices')</label>
                                 <div class="mb-3">
                                     <div class="form-check form-check-inline">

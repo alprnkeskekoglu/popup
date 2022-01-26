@@ -9,6 +9,7 @@ return [
 
     'labels' => [
         'status' => 'Durum',
+        'order' => 'Sıra',
         'devices' => 'Gösterilecek Cihazlar',
         'type' => 'Tip',
         'start_date' => 'Başlangıç Tarihi',

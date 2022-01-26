@@ -9,6 +9,7 @@ return [
 
     'labels' => [
         'status' => 'Status',
+        'order' => 'Order',
         'devices' => 'Devices to Display',
         'type' => 'Type',
         'start_date' => ' Start Date',

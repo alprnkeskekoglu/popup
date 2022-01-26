@@ -17,12 +17,13 @@ class CreatePopupsTable extends Migration
             $table->id();
             $table->foreignId('website_id')->index()->constrained()->onDelete('cascade');
             $table->tinyInteger('status')->default(2);
+            $table->unsignedTinyInteger('order')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->json('devices');
             $table->unsignedTinyInteger('type');
             $table->tinyInteger('display');
-            $table->unsignedSmallInteger('display_second');
+            $table->unsignedSmallInteger('display_second')->nullable();
             $table->boolean('show_name')->default(false);
             $table->tinyInteger('limit')->default(1);
             $table->unsignedSmallInteger('limit_count')->nullable();

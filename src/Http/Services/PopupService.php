@@ -66,6 +66,7 @@ class PopupService
                     });
             })
             ->with('urls', 'translation')
+            ->orderBy('order')
             ->get();
     }
 
