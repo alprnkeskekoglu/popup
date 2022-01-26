@@ -21,7 +21,7 @@ class PopupRequest extends FormRequest
             'limit_count' => ['required_if:limit,2', 'required_if:limit,3', 'numeric', 'min:0'],
             'trigger' => ['required', 'numeric'],
             'trigger_count' => ['required', 'numeric', 'min:0'],
-            'display_time' => ['required', 'numeric', 'min:0'],
+            'display_second' => ['required', 'numeric', 'min:0'],
             'show_name' => ['required', 'boolean'],
 
             'translations.*.name' => ['required_if:languages.*,1'],

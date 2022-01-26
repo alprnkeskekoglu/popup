@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawnstar\ModuleBuilder\Models;
+namespace Dawnstar\Popup\Models;
 
 use Dawnstar\Core\Models\Structure;
 use Dawnstar\Core\Traits\HasTranslation;

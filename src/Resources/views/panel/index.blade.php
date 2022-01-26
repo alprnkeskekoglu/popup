@@ -19,6 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('Popup::general.labels.status')</th>
+                                <th>@lang('Popup::general.labels.name')</th>
                                 <th>@lang('Core::general.actions')</th>
                             </tr>
                             </thead>
@@ -29,6 +30,7 @@
                                     <td>
                                         <span class="badge bg-{{ statusClass($popup->status) }} font-16">{{ statusText($popup->status) }}</span>
                                     </td>
+                                    <td>{{ $popup->translation->name }}</td>
                                     <td class="table-action">
                                         <a href="{{ route('dawnstar.popups.edit', $popup) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                         <form action="{{ route('dawnstar.popups.destroy', $popup) }}" method="POST" class="d-inline">

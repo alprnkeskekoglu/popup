@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePopupModelsTable extends Migration
+class CreatePopupUrlsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePopupModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('popup_models', function (Blueprint $table) {
+        Schema::create('popup_urls', function (Blueprint $table) {
             $table->foreignId('popup_id')->constrained()->onDelete('cascade');
-            $table->morphs('model');
+            $table->foreignId('url_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -26,6 +26,6 @@ class CreatePopupModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('popup_models');
+        Schema::dropIfExists('popup_urls');
     }
 }
