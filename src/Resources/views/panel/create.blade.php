@@ -59,21 +59,21 @@
                                         <input type="checkbox" id="device_desktop" name="devices[]" class="form-check-input @error('devices') is-invalid @enderror"
                                                value="desktop" {{ in_array('desktop', old('devices', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="device_desktop">
-                                            <img src="/assets/medias/audio.png" class="img-fluid avatar-sm">
+                                            <img src="{{ asset('vendor/dawnstar/popup/medias/desktop.png') }}" class="img-fluid avatar-sm">
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" id="device_tablet" name="devices[]" class="form-check-input @error('devices') is-invalid @enderror"
                                                value="tablet" {{ in_array('tablet', old('devices', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="device_tablet">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-sm">
+                                            <img src="{{ asset('vendor/dawnstar/popup/medias/tablet.png') }}" class="img-fluid avatar-sm">
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" id="device_mobile" name="devices[]" class="form-check-input @error('devices') is-invalid @enderror"
                                                value="mobile" {{ in_array('mobile', old('devices', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="device_mobile">
-                                            <img src="/assets/medias/pdf.png" class="img-fluid avatar-sm">
+                                            <img src="{{ asset('vendor/dawnstar/popup/medias/mobile.png') }}" class="img-fluid avatar-sm">
                                         </label>
                                     </div>
                                     @error('devices')
@@ -86,62 +86,15 @@
                             <div class="col-lg-12">
                                 <label class="form-label">@lang('Popup::general.labels.type')</label>
                                 <div class="mb-3">
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_1" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="1" {{ old('type') == '1' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_1">
-                                            <img src="/assets/medias/audio.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_2" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="2" {{ old('type') == '2' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_2">
-                                            <img src="/assets/medias/pdf.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_3" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="3" {{ old('type') == '3' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_3">
-                                            <img src="/assets/medias/pdf.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_4" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="4" {{ old('type') == '4' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_4">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_5" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="5" {{ old('type') == '5' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_5">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_6" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="6" {{ old('type') == '6' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_6">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_7" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="7" {{ old('type') == '7' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_7">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="type_8" name="type" class="form-check-input @error('type') is-invalid @enderror"
-                                               value="8" {{ old('type') == '8' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type_8">
-                                            <img src="/assets/medias/doc.png" class="img-fluid avatar-xl">
-                                        </label>
-                                    </div>
+                                    @for($i=1; $i <= 8; $i++)
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="type_{{ $i }}" name="type" class="form-check-input @error('type') is-invalid @enderror"
+                                                   value="{{ $i }}" {{ old('type') == $i ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="type_{{ $i }}">
+                                                <img src="{{ asset('vendor/dawnstar/popup/medias/0'.$i.'.png') }}" class="img-fluid avatar-xl">
+                                            </label>
+                                        </div>
+                                    @endfor
                                     @error('type')
                                     <div class="invalid-feedback d-block">
                                         {{ $message }}
@@ -364,21 +317,21 @@
             $('#start_date').attr('max', $(this).val())
         })
         $('#display').on('change', function () {
-            if($(this).val() == 3)  {
+            if ($(this).val() == 3) {
                 $('#urls').parent().removeClass('d-none');
             } else {
                 $('#urls').parent().addClass('d-none');
             }
         })
         $('#trigger').on('change', function () {
-            if($(this).val() == 1)  {
+            if ($(this).val() == 1) {
                 $('#trigger_count').parent().addClass('d-none');
             } else {
                 $('#trigger_count').parent().removeClass('d-none');
             }
         })
         $('#limit').on('change', function () {
-            if($(this).val() == 1)  {
+            if ($(this).val() == 1) {
                 $('#limit_count').parent().addClass('d-none');
             } else {
                 $('#limit_count').parent().removeClass('d-none');

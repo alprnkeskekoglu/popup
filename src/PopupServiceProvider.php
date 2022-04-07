@@ -19,5 +19,7 @@ class PopupServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/Resources/views/panel', 'Popup');
         $this->loadViewsFrom(__DIR__ . '/Resources/views/web', 'PopupWeb');
         $this->loadTranslationsFrom(__DIR__ . '/Resources/lang', 'Popup');
+
+        $this->publishes([__DIR__ . '/Assets' => public_path('vendor/dawnstar/popup')], 'dawnstar-popup-assets');
     }
 }

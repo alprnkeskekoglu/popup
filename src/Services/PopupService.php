@@ -1,26 +1,43 @@
 <?php
 
-namespace Dawnstar\Popup\Http\Services;
+namespace Dawnstar\Popup\Services;
 
 use Carbon\Carbon;
 use Dawnstar\Core\Foundation\Dawnstar;
 use Dawnstar\Popup\Models\Popup;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Agent;
 
+/**
+ * Class PopupService
+ * @package Dawnstar\Popup\Services
+ */
 class PopupService
 {
+    /**
+     * @var Dawnstar|\Illuminate\Contracts\Foundation\Application|mixed
+     */
     protected Dawnstar $dawnstar;
+    /**
+     * @var false|string
+     */
     protected $date;
 
+    /**
+     * PopupService constructor.
+     */
     public function __construct()
     {
         $this->dawnstar = dawnstar();
         $this->date = date('Y-m-d');
     }
 
-    public function init()
+    /**
+     * @return string
+     */
+    public function init(): string
     {
         $popups = $this->getPopups();
 
@@ -36,7 +53,10 @@ class PopupService
         return $html;
     }
 
-    private function getPopups()
+    /**
+     * @return Collection
+     */
+    private function getPopups(): Collection
     {
         $device = $this->getDevice();
 
@@ -70,14 +90,22 @@ class PopupService
             ->get();
     }
 
-    private function getDevice()
+    /**
+     * @return string
+     */
+    private function getDevice(): string
     {
         $agent = new Agent();
         return $agent->deviceType();
     }
 
     #region Helpers
-    private function setLimit(Popup $popup)
+
+    /**
+     * @param Popup $popup
+     * @return bool
+     */
+    private function setLimit(Popup $popup): bool
     {
         if($popup->limit == 2) {
             $sessionData = session('_dapo', []);
