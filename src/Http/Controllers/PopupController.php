@@ -47,8 +47,9 @@ class PopupController extends Controller
     {
         $urls = $this->getUrls();
         $selectedUrls = $popup->urls()->pluck('id')->toArray();
+        $activeLanguageIds = $popup->translations()->pluck('status', 'language_id')->toArray();
 
-        return view('Popup::edit', compact('popup', 'urls', 'selectedUrls'));
+        return view('Popup::edit', compact('popup', 'urls', 'selectedUrls', 'activeLanguageIds'));
     }
 
     public function update(Popup $popup, PopupRequest $request)
